@@ -16,28 +16,36 @@ export function ConstructionVisual({ scrollYProgress }: ConstructionVisualProps)
         const currentProgress = stage.progress;
         const nextProgress = i < constructionStages.length - 1 ? constructionStages[i + 1].progress : 1;
 
+        const p = 0.04; // Padding for the clear state
+        const clearStart = Math.max(0, currentProgress - p);
+        const clearEnd = Math.min(1, currentProgress + p);
+
         const range = i === 0 
-          ? [0, nextProgress, 1] 
+          ? [0, clearEnd, nextProgress, 1] 
           : i === constructionStages.length - 1 
-            ? [0, prevProgress, currentProgress] 
-            : [0, prevProgress, currentProgress, nextProgress, 1];
+            ? [0, prevProgress, clearStart, 1] 
+            : [0, prevProgress, clearStart, clearEnd, nextProgress, 1];
 
         const opacity = useTransform(
           scrollYProgress,
           range,
-          i === 0 ? [1, 0, 0] : i === constructionStages.length - 1 ? [0, 0, 1] : [0, 0, 1, 0, 0]
+          i === 0 ? [1, 1, 0, 0] : i === constructionStages.length - 1 ? [0, 0, 1, 1] : [0, 0, 1, 1, 0, 0]
         );
 
         const scale = useTransform(
           scrollYProgress,
           range,
-          i === 0 ? [1, 0.95, 0.95] : i === constructionStages.length - 1 ? [1.05, 1.05, 1] : [1.05, 1.05, 1, 0.95, 0.95]
+          i === 0 ? [1, 1, 0.95, 0.95] : i === constructionStages.length - 1 ? [1.05, 1.05, 1, 1] : [1.05, 1.05, 1, 1, 0.95, 0.95]
         );
 
         const filter = useTransform(
           scrollYProgress,
           range,
-          i === 0 ? ["blur(0px)", "blur(10px)", "blur(10px)"] : i === constructionStages.length - 1 ? ["blur(10px)", "blur(10px)", "blur(0px)"] : ["blur(10px)", "blur(10px)", "blur(0px)", "blur(10px)", "blur(10px)"]
+          i === 0 
+            ? ["blur(0px)", "blur(0px)", "blur(10px)", "blur(10px)"] 
+            : i === constructionStages.length - 1 
+              ? ["blur(10px)", "blur(10px)", "blur(0px)", "blur(0px)"] 
+              : ["blur(10px)", "blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)", "blur(10px)"]
         );
 
         return (
