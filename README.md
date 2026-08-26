@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cinematic Construction Experience
 
-## Getting Started
+A premium, award-style scroll-driven interactive experience that tells the story of a building being constructed from an empty plot of land into a fully completed industrial building. 
 
-First, run the development server:
+As the user scrolls, the construction visually progresses through cross-fading cinematic images, bold typography, and smooth kinetic text transitions.
+
+## ✨ Features
+
+- **Scroll-Driven Storytelling**: The entire experience is tethered to the user's scroll position, creating a 1:1 tactile connection between scrolling and construction progress.
+- **Cinematic Visuals**: Full-screen, edge-to-edge images with dynamic blur filters, scaling, and cross-fades powered by Framer Motion.
+- **Interactive Progress Navigation**: A sticky vertical progress tracker on the left that allows users to instantly jump to any construction phase.
+- **Smooth Scrolling**: Integrated with Lenis for a buttery-smooth scrolling experience on both desktop and mobile.
+- **Premium Typography**: High-contrast, glowing display fonts (Oswald) paired with elegant body fonts (Inter) for an industrial, structural feel.
+
+## 🛠 Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [Framer Motion](https://www.framer.com/motion/) (Scroll Animations & Web Animations API)
+- [Lenis](https://lenis.studiofreight.com/) (Smooth Scrolling)
+- [Tailwind CSS](https://tailwindcss.com/) (Styling)
+
+## 🚀 Getting Started
+
+First, install the dependencies:
+
+```bash
+npm install
+# or yarn install, pnpm install, bun install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# or yarn dev, pnpm dev, bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗 Construction Stages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The timeline follows 7 distinct phases of construction:
 
-## Learn More
+1. **Site Prep**: Securing the site
+2. **Excavation**: Clearing the ground
+3. **Foundation**: Pouring concrete and reinforcing the base
+4. **Columns**: Raising vertical supports
+5. **Frame**: Assembling the structural skeleton
+6. **Enclosure**: Sealing the exterior
+7. **Handover**: The completed building
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Data and timing for these stages can be modified in `src/data/constructionStages.ts`.
